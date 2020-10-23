@@ -12,125 +12,150 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { doesNotMatch } = require("assert");
 
-function menu (){
-      function createManager (){
-          inquirer.prompt([
-            {
-              type: "input",
-              name: "name",
-              message: "Enter the Manager's Name",
-            },
-            {
-              type: "input",
-              name: "id",
-              message: "Enter the Manager's ID number",
-            },
-            {
-              type: "input",
-              name: "email",
-              message: "Enter the Manager's email address",
-            },
-
-          ])
-          .then(answers => {
-
-
-          })
-      }
-
-      function createTeam(){
-
-      }
-}
-getName() {
+function menu() {
+  function createManager() {
     inquirer
       .prompt([
         {
           type: "input",
           name: "name",
-          message: "Enter the Name",
+          message: "Enter the Manager's Name",
         },
-      ])
-      .then(function (response) {
-        let name = response.name;
-        console.log(name);
-      });
-  }
-
-getId() {
-    inquirer
-      .prompt([
         {
           type: "input",
           name: "id",
-          message: "Enter the ID number",
+          message: "Enter the Manager's ID number",
         },
-      ])
-      .then(function (response) {
-        let id = response.id;
-        console.log(id);
-      });
-  }
-
-  getEmail() {
-    inquirer
-      .prompt([
         {
           type: "input",
           name: "email",
-          message: "Enter the email address",
+          message: "Enter the Manager's email address",
+        },
+        {
+          type: "list",
+          message: "What is the manager's office number?",
+          name: "officeNumber",
         },
       ])
-      .then(function (response) {
-        let email = response.email;
-        console.log(email);
+      .then((answers) => {
+        const manager = new Manager(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.officeNumber
+        );
+        team.push(manager);
+        console.log("Created the Manager - let's now add team members.");
+        createTeam();
       });
   }
-  getRole() {
+
+  function createTeam() {
     inquirer
       .prompt([
         {
           type: "list",
-          message: "What is the employee's role?",
-          choices: ["Manager", "Engineer", "Intern"],
+          message: "What is the employee's role? - or are we done?",
+          choices: ["Engineer", "Intern", "I'm Done"],
           name: "employeeType",
         },
       ])
       .then(function (response) {
-        if (response.employeeType === "Manager") {
-          inquirer
-            .prompt([
-              {
-                type: "list",
-                message: "What is the manager's office number?",
-                name: "officeNumber",
-              },
-            ])
-            .then(function (response) {
-              const manager = new manager();
-              let officeNumber = response.officeNumber;
-              console.log(officeNumber);
-            });
+        switch (response.employeeType) {
+          case "Engineer":
+            createEngineer();
+            break;
+          case "Intern":
+            createIntern();
+            break;
+          case "I'm Done":
+            build();
+            break;
         }
       });
   }
 
-  render()
-}
+  function createEngineer() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: "Enter the Engineer's Name",
+        },
+        {
+          type: "input",
+          name: "id",
+          message: "Enter the Engineer's ID number",
+        },
+        {
+          type: "input",
+          name: "email",
+          message: "Enter the Engineer's email address",
+        },
+        {
+          type: "list",
+          message: "What is the Engineer's GitHub username?",
+          name: "github",
+        },
+      ])
+      .then((answers) => {
+        const engineer = new Engineer(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.github
+        );
+        team.push(engineer);
+        console.log("Created the Engineer - let's now add more team members.");
+        createTeam();
+      });
+  }
 
-class Manager extends Employee {
-  constructor(officeNumber) {
-    super(name, id, email, role);
-    this.officeNumber = officeNumber;
+  function createIntern() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: "Enter the Intern's Name",
+        },
+        {
+          type: "input",
+          name: "id",
+          message: "Enter the Intern's ID number",
+        },
+        {
+          type: "input",
+          name: "email",
+          message: "Enter the Intern's email address",
+        },
+        {
+          type: "list",
+          message: "Which school is the intern from?",
+          name: "school",
+        },
+      ])
+      .then((answers) => {
+        const intern = new Intern(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.school
+        );
+        team.push(intern);
+        console.log("Created the Intern - let's now add more team members.");
+        createTeam();
+      });
+  }
+
+  function build() {
+    fs.writeFileSyn(outputPath, render(team), "utf-8");
   }
 }
-
-const employee = new Employee();
-const name = employee.getName();
-const id = employee.getId();
-const email = employee.getEmail();
-const role = employee.getRole();
+menu();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
