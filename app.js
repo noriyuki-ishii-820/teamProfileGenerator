@@ -179,6 +179,7 @@ function createIntern() {
 }
 
 function build() {
+  console.log("Generated the HTML file in the output folder!");
   fs.writeFileSync(outputPath, render(team), "utf-8");
 }
 
