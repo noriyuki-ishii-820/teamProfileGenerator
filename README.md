@@ -36,6 +36,8 @@ The CLI offers the inputs for the engineer's information (which is slightly diff
 
 Once the user hits "I'm Done" the application will generate an HTML file with the data entered. (the design of the website is subject to change)
 
+An example of the generated file can be found in the output folder.
+
 ## License
 
 MIT
