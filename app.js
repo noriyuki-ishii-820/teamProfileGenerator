@@ -26,16 +26,28 @@ function createManager() {
         type: "input",
         name: "id",
         message: "Enter the Manager's ID number",
+        validate: (input) =>
+          Number.isInteger(Number(input)) && Number(input) > 0
+            ? true
+            : "Please enter a valid number",
       },
       {
         type: "input",
         name: "email",
         message: "Enter the Manager's email address",
+        validate: (input) =>
+          /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(input)
+            ? true
+            : "Please enter a valid email address",
       },
       {
         type: "input",
         message: "What is the manager's office number?",
         name: "officeNumber",
+        validate: (input) =>
+          Number.isInteger(Number(input)) && Number(input) > 0
+            ? true
+            : "Please enter a valid number",
       },
     ])
     .then((answers) => {
@@ -88,11 +100,19 @@ function createEngineer() {
         type: "input",
         name: "id",
         message: "Enter the Engineer's ID number",
+        validate: (input) =>
+          Number.isInteger(Number(input)) && Number(input) > 0
+            ? true
+            : "Please enter a valid number",
       },
       {
         type: "input",
         name: "email",
         message: "Enter the Engineer's email address",
+        validate: (input) =>
+          /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(input)
+            ? true
+            : "Please enter a valid email address",
       },
       {
         type: "input",
@@ -125,11 +145,19 @@ function createIntern() {
         type: "input",
         name: "id",
         message: "Enter the Intern's ID number",
+        validate: (input) =>
+          Number.isInteger(Number(input)) && Number(input) > 0
+            ? true
+            : "Please enter a valid number",
       },
       {
         type: "input",
         name: "email",
         message: "Enter the Intern's email address",
+        validate: (input) =>
+          /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(input)
+            ? true
+            : "Please enter a valid email address",
       },
       {
         type: "input",
