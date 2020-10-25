@@ -20,21 +20,33 @@ Please use: npm i
 
 ## Usage
 
+Screenshot 1: The application firstly offers the user to input the information of the Manager. Input validation in place for names (number-proof), ID (integer-proof) and email address.
+
 ![](./img/team1.png)
 
-The application firstly offers the user to input the information of the Manager. Input validation in place for names (number-proof), ID (integer-proof) and email address.
+---
+
+Screenshot 2: A t the end of the manager inputs, the user is given the choice to enter the information of either an engineer or an intern, OR to end the input.
 
 ![](./img/team2.png)
 
-At the end of the manager inputs, the user is given the choice to enter the information of either an engineer or an intern, OR to end the input.
+---
+
+Screenshot 3: The CLI offers the inputs for the engineer's information (which is slightly different from the one of the Manager). At the end of the input, the user is again offered the choice to keep entering team members or finish the process.
 
 ![](./img/team3.png)
 
-The CLI offers the inputs for the engineer's information (which is slightly different from the one of the Manager). At the end of the input, the user is again offered the choice to keep entering team members or finish the process.
+---
+
+Screenshot 4: Once the user hits "I'm Done" the application will generate an HTML file with the data entered. (the design of the website is subject to change)
 
 ![](./img/team4.png)
 
-Once the user hits "I'm Done" the application will generate an HTML file with the data entered. (the design of the website is subject to change)
+---
+
+Screenshot 5: Design updated.
+
+![](./img/team5.png)
 
 An example of the generated file can be found in the output folder.
 

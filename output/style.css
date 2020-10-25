@@ -1,0 +1,28 @@
+.team-heading {
+  background: rgb(66, 119, 245);
+  background: radial-gradient(
+    circle,
+    rgba(66, 119, 245, 1) 7%,
+    rgba(14, 26, 54, 1) 54%,
+    rgba(14, 26, 54, 1) 68%
+  );
+  color: white;
+}
+
+.manager-card {
+  background: #f5aa51;
+}
+
+.eng-card {
+  background: #4ebff5;
+}
+
+.intern-card {
+  background: #f5dd5b;
+}
+
+.employee-card {
+  border: 1px black solid;
+  margin: 3px;
+  box-shadow: 2px 2px 2px;
+}
