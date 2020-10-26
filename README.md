@@ -50,6 +50,9 @@ Screenshot 5: Design updated.
 
 An example of the generated file can be found in the output folder.
 
+Please find the 1-min demo video from the following link:
+https://drive.google.com/file/d/1NDdhohsfm3I2XEX5r4hPfsq2MLNEB4R6/view?usp=sharing
+
 ## License
 
 MIT
